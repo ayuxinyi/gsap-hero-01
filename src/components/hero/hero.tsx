@@ -1,9 +1,17 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
+import { useRef } from "react";
+import { useMediaQuery } from "react-responsive";
 
 export const Hero = () => {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // 通过useMediaQuery判断是否是移动端
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   useGSAP(() => {
+    // 标题和段落的分割
     const heroSplit = new SplitText(".title", {
       // 文字分割方式，这里是分割成字符和单词
       type: "chars,words",
@@ -14,6 +22,7 @@ export const Hero = () => {
     });
     // 遍历所有字符，添加渐变类名
     heroSplit.chars.forEach(char => char.classList.add("text-gradient"));
+    // 标题和段落的动画
     gsap.from(heroSplit.chars, {
       // 从底部开始动画
       yPercent: 100,
@@ -30,6 +39,7 @@ export const Hero = () => {
       // 它将在上一个动画完成后延迟 1 秒开始
       delay: 1,
     });
+    // hero区域的滚动动画
     gsap
       .timeline({
         scrollTrigger: {
@@ -43,6 +53,29 @@ export const Hero = () => {
       // 第一个参数是要控制的元素，第二个参数是要控制的属性，第三个参数是动画开始的时间点
       .to(".right-leaf", { y: 200 }, 0)
       .to(".left-leaf", { y: -200 }, 0);
+
+    const startValue = isMobile ? "top 50%" : "center 60%";
+    // 120% top 指的是元素离开视口的距离超过 120% 时，就会结束动画
+    const endValue = isMobile ? "120% top" : "bottom top";
+    const videoTimeLine = gsap.timeline({
+      scrollTrigger: {
+        trigger: "video",
+        start: startValue,
+        end: endValue,
+        scrub: true,
+        // 视频会固定在视口内，不会离开视口
+        pin: true,
+      },
+    });
+    if (!videoRef.current) return;
+    // 视频加载完成后，触发动画
+    videoRef.current.onloadedmetadata = () => {
+      videoTimeLine.to(videoRef.current, {
+        // 这里是在控制video元素的currentTime属性，让视频随着滚动动画的变化而变化
+        // 视频的播放位置会从0变化到视频的总时长
+        currentTime: videoRef.current!.duration,
+      });
+    };
   }, []);
 
   return (
@@ -81,6 +114,17 @@ export const Hero = () => {
           </div>
         </div>
       </section>
+      {/* video */}
+      <div className="video absolute inset-0">
+        {/* muted:静音,playsInline:隐藏播放控件 ,preload:预加载*/}
+        <video
+          src="/videos/output.mp4"
+          muted
+          playsInline
+          preload="auto"
+          ref={videoRef}
+        />
+      </div>
     </>
   );
 };
