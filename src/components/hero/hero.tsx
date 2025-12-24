@@ -2,7 +2,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 
-const Hero = () => {
+export const Hero = () => {
   useGSAP(() => {
     const heroSplit = new SplitText(".title", {
       // 文字分割方式，这里是分割成字符和单词
@@ -30,6 +30,19 @@ const Hero = () => {
       // 它将在上一个动画完成后延迟 1 秒开始
       delay: 1,
     });
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: "#hero",
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        },
+      })
+      // 通过to方法控制hero区域内的两个叶子的位置
+      // 第一个参数是要控制的元素，第二个参数是要控制的属性，第三个参数是动画开始的时间点
+      .to(".right-leaf", { y: 200 }, 0)
+      .to(".left-leaf", { y: -200 }, 0);
   }, []);
 
   return (
@@ -71,4 +84,3 @@ const Hero = () => {
     </>
   );
 };
-export default Hero;
