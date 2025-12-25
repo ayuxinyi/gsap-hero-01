@@ -29,7 +29,7 @@ export const Navbar = () => {
 
   return (
     <nav>
-      <div className="px-4">
+      <div className="lg:px-4">
         <a href="#home" className="flex items-center gap-2">
           <img src="/images/logo.png" alt="一张鸡尾酒的logo图片" />
           <h1>Velvet Pour</h1>
