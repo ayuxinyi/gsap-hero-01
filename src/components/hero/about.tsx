@@ -36,7 +36,7 @@ export const About = () => {
   }, []);
 
   return (
-    <section id="about">
+    <div id="about">
       <div className="mb-16 md:px-0 px-5">
         <div className="content">
           <div className="md:col-span-8">
@@ -93,6 +93,6 @@ export const About = () => {
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 };

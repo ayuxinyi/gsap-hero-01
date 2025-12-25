@@ -24,22 +24,18 @@ body {
   overflow-x: hidden;
 }
 
-/* 水平居中 */
 @utility flex-center {
   @apply flex justify-center items-center;
 }
 
-/* 垂直居中 */
 @utility col-center {
   @apply flex flex-col justify-center items-center;
 }
 
-/* 绝对居中 */
 @utility abs-center {
   @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
 }
 
-/* 文字渐变 */
 @utility text-gradient {
   background: linear-gradient(to bottom, #ffffff, #898989);
   -webkit-background-clip: text;
@@ -47,7 +43,6 @@ body {
   color: transparent;
 }
 
-/* 背景渐变 */
 @utility radial-gradient {
   background: radial-gradient(
     circle at center,
@@ -57,7 +52,6 @@ body {
   );
 }
 
-/* 图片遮罩 */
 @utility masked-img {
   mask-image: url("/images/mask-img.png");
   mask-repeat: no-repeat;
@@ -65,10 +59,9 @@ body {
   mask-size: 50%;
 }
 
-/* 自定义组件 */
 @layer components {
   main {
-    @apply w-full overflow-x-hidden;
+    @apply w-full overflow-hidden;
   }
 
   nav {
@@ -78,7 +71,7 @@ body {
       @apply flex md:flex-row flex-col md:justify-between items-center gap-5 py-5 lg:px-0 px-5 container mx-auto;
     }
 
-    h1 {
+    p {
       @apply font-modern-negra text-3xl -mb-2;
     }
 
@@ -307,7 +300,7 @@ body {
         @apply flex items-center justify-between w-full absolute;
 
         button {
-          @apply text-white hover:text-yellow cursor-pointer transition-colors max-w-36;
+          @apply text-white hover:text-yellow cursor-pointer transition-colors max-w-50;
 
           span {
             @apply text-3xl font-modern-negra leading-none hidden md:block;
@@ -331,7 +324,7 @@ body {
         @apply space-y-4 lg:translate-y-20;
 
         #title {
-          @apply font-modern-negra md:text-6xl text-3xl text-yellow max-w-40;
+          @apply font-modern-negra md:text-6xl text-3xl text-yellow max-w-50;
         }
       }
 
