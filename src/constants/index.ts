@@ -10,25 +10,25 @@ const COCK_TAIL_LISTS = [
     name: "Chapel Hill Shiraz",
     country: "澳大利亚",
     detail: "经典款",
-    price: "$10",
+    price: "¥10",
   },
   {
     name: "Caten Malbee",
     country: "澳大利亚",
     detail: "经典款",
-    price: "$49",
+    price: "¥49",
   },
   {
     name: "Rhino 淡色艾尔",
     country: "加拿大",
     detail: "750 毫升",
-    price: "$20",
+    price: "¥20",
   },
   {
     name: "爱尔兰健力士",
     country: "爱尔兰",
     detail: "600 毫升",
-    price: "$29",
+    price: "¥29",
   },
 ];
 
@@ -37,25 +37,25 @@ const MOCK_TAIL_LISTS = [
     name: "热带绽放",
     country: "美国",
     detail: "经典款",
-    price: "$10",
+    price: "¥10",
   },
   {
     name: "百香薄荷",
     country: "美国",
     detail: "经典款",
-    price: "$49",
+    price: "¥49",
   },
   {
     name: "柑橘光辉",
     country: "加拿大",
     detail: "750 毫升",
-    price: "$20",
+    price: "¥20",
   },
   {
     name: "薰衣草气泡",
     country: "爱尔兰",
     detail: "600 毫升",
-    price: "$29",
+    price: "¥29",
   },
 ];
 
