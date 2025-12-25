@@ -37,7 +37,7 @@ export const Art = () => {
   }, []);
 
   return (
-    <section id="art">
+    <div id="art">
       <div className="container mx-auto h-full pt-20">
         <h2 className="will-fade">调酒之道</h2>
         <div className="content">
@@ -73,6 +73,6 @@ export const Art = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
